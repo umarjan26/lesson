@@ -72,7 +72,34 @@ def index_view(request):
             secret_numbers = [5, 1, 2, 9]
             checker = check1(num)
             check2(checker)
+            check3(checker)
+            check4(checker, secret_numbers)
+            bulls, cows = check5(checker, secret_numbers)
+            global TOTAL
+            TOTAL += 1
+            global NUMBERS1
+            NUMBERS1.append(TOTAL)
+            if bulls == 4:
+                checker = "You got it right!"
+            else:
+                checker = f"Bulls:{bulls} Cows:{cows}"
+            NUMBERS1.append(checker)
         except ValueError:
             checker = "Error value not int"
         except ErrorValueRange:
             checker = "Error value not range 1,9"
+        except ErrorValueSet:
+            checker = "Error repeating elements"
+        except ErrorValueDeficiency:
+            checker = "Error deficiency elements"
+        context = {
+            "value": checker
+        }
+        return render(request, "index.html", context)
+
+
+def stat(request):
+    context = {
+        "value": NUMBERS1
+    }
+    return render(request, "game.html", context)
