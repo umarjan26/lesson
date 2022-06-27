@@ -8,10 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Задачи</h1>
-<a href="add/">Создание задачи</a>
+<img src="https://media.tproger.ru/uploads/2021/10/4697683_check_checklist_list_pencil_plan_icon-cover-icon-original.png" width="80" height="90"alt="cartinca"><h1>Задачи</h1>
+<a href="add/" style="text-transform:uppercase">Создание задачи</a>
 {% for task in tasks %}
-    <h3>{{ task.task }}</h3><i>{{ task.status }} - {{ task.get_status_display }} </i>
+    <h3 style="color:#FF0000", >{{ task.task }}</h3> <p style="color:#FF0000"><i> {{ task.status }} --- {{ task.get_status_display }} </i>
+
+</p>
 {% endfor %}
 </body>
 </html>
